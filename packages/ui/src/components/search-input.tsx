@@ -21,11 +21,11 @@ function SearchInput({
 
   return (
     <div className={cn("relative", className)}>
-      <SearchIcon className="text-muted-foreground pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" />
+      <SearchIcon className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary" />
       <Input
         type="text"
         placeholder={placeholder}
-        className="w-full pl-9 border-0 shadow-none focus-visible:border focus-visible:border-black focus-visible:shadow-none bg-white"
+        className="w-full pl-9 border-1 shadow-none focus-visible:border focus-visible:border-black focus-visible:shadow-none bg-white rounded-sm"
         onChange={handleChange}
         {...props}
       />

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "lucide-react";
+import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 
 import { cn } from "@repo/ui/lib/utils";
 
@@ -59,12 +59,12 @@ function DataTable<T extends Record<string, any>>({
                     <div className="flex flex-col">
                       {sortState?.column === column.accessorKey &&
                       sortState.direction === "asc" ? (
-                        <ChevronUpIcon className="size-3.5" />
+                        <ArrowUpIcon className="size-3.5" />
                       ) : sortState?.column === column.accessorKey &&
                         sortState.direction === "desc" ? (
-                        <ChevronDownIcon className="size-3.5" />
+                        <ArrowDownIcon className="size-3.5" />
                       ) : (
-                        <ChevronDownIcon className="text-muted-foreground size-3.5" />
+                        <ArrowDownIcon className="text-muted-foreground size-3.5" />
                       )}
                     </div>
                   )}

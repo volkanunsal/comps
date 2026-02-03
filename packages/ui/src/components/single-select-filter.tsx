@@ -57,7 +57,10 @@ function SingleSelectFilter({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={cn("justify-between gap-2", className)}
+          className={cn(
+            "justify-between gap-2 border-primary text-primary",
+            className,
+          )}
         >
           <span>{displayText}</span>
           {open ? (

@@ -1,13 +1,13 @@
 import { useState, useMemo } from "react";
-import { SearchInput } from "@repo/ui/components/search-input.js";
-import { SingleSelectFilter } from "@repo/ui/components/single-select-filter.js";
-import { MultiSelectFilter } from "@repo/ui/components/multi-select-filter.js";
+import { SearchInput } from "@repo/ui/components/search-input";
+import { SingleSelectFilter } from "@repo/ui/components/single-select-filter";
+import { MultiSelectFilter } from "@repo/ui/components/multi-select-filter";
 import {
   DataTable,
   type ColumnDef,
   type SortState,
-} from "@repo/ui/components/data-table.js";
-import { SimplePagination } from "@repo/ui/components/simple-pagination.js";
+} from "@repo/ui/components/data-table";
+import { SimplePagination } from "@repo/ui/components/simple-pagination";
 import { songs, genres, artists, type Song } from "./data/songs";
 
 const ITEMS_PER_PAGE = 10;

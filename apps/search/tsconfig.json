@@ -7,7 +7,8 @@
       }
     ],
     "paths": {
-      "@app/*": ["./*"]
+      "@app/*": ["./*"],
+      "@repo/ui/*": ["../../packages/ui/src/*"]
     },
     "skipLibCheck": true,
     "strictFunctionTypes": false

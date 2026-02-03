@@ -95,7 +95,10 @@ function MultiSelectFilter({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={cn("justify-between gap-2", className)}
+          className={cn(
+            "justify-between gap-2 border-primary text-primary",
+            className,
+          )}
         >
           <span>{displayText}</span>
           {open ? (
@@ -105,12 +108,12 @@ function MultiSelectFilter({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[500px] p-0" align="start">
+      <PopoverContent className="w-[500px] p-0 rounded-none" align="start">
         <div className="flex h-[350px]">
           {/* Left panel - options list */}
           <div className="flex flex-1 flex-col border-r">
             {/* Search */}
-            <div className="border-b p-2">
+            <div className="">
               <div className="relative">
                 <SearchIcon className="text-muted-foreground pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" />
                 <Input
@@ -118,7 +121,7 @@ function MultiSelectFilter({
                   placeholder={searchPlaceholder}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-9"
+                  className="pl-9 border-0 rounded-none"
                 />
               </div>
             </div>
@@ -167,7 +170,7 @@ function MultiSelectFilter({
                       <button
                         type="button"
                         onClick={(e) => handleRemove(option.value, e)}
-                        className="text-[#016088] shrink-0"
+                        className="text-primary shrink-0"
                       >
                         <XIcon className="size-3.5" />
                       </button>
@@ -182,13 +185,19 @@ function MultiSelectFilter({
 
         {/* Footer actions */}
         <div className="flex items-center justify-end gap-2 border-t p-3">
-          <Button variant="outline" size="sm" onClick={handleClearAll}>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleClearAll}
+            className="w-20"
+          >
             Clear All
           </Button>
           <Button
             size="sm"
             onClick={handleApply}
-            className="bg-[#016088] hover:bg-[#014d6b] text-white"
+            variant="primary"
+            className="w-20"
           >
             Apply
           </Button>
