@@ -20,6 +20,9 @@
     "deploy": {
       "dependsOn": ["build"],
       "cache": false
+    },
+    "deploy:gh-pages": {
+      "cache": false
     }
   }
 }

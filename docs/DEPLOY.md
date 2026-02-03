@@ -12,26 +12,32 @@ This project is configured to deploy to GitHub Pages using Turborepo.
 
 ### Manual Deployment
 
-#### Option 1: Using the deploy script (Recommended)
+#### Option 1: Using the Turbo task (Recommended)
 
 ```bash
-./deploy.sh
+pnpm deploy:gh-pages
 ```
 
-This script will:
+This runs the deployment script through Turborepo, which will:
 
 - Check if a git remote is configured
 - Build the project with the correct base path
 - Deploy to GitHub Pages
 
-#### Option 2: Using Turbo directly
+#### Option 2: Run the script directly
+
+```bash
+./scripts/deploy.sh
+```
+
+#### Option 3: Using individual commands
 
 ```bash
 # Build with GitHub Pages environment variable
 GITHUB_PAGES=true pnpm build
 
 # Deploy from the search app
-pnpm deploy
+cd apps/search && pnpm deploy
 ```
 
 ### Automated Deployment with GitHub Actions
@@ -68,6 +74,7 @@ The deployment configuration uses:
 - **Base path**: `/comps/` (or your repository name)
 - **Environment variable**: `GITHUB_PAGES=true` enables the correct base path
 - **Output directory**: `apps/search/dist`
+- **Deployment script**: `scripts/deploy.sh`
 
 To change the repository name used in the base path, update line 8 in `apps/search/vite.config.ts`:
 
@@ -80,7 +87,25 @@ base: process.env.GITHUB_PAGES ? "/YOUR-REPO-NAME/" : "/",
 The deployment process uses the following Turbo tasks:
 
 - `pnpm build` - Builds all packages and apps (includes UI package build)
-- `pnpm deploy` - Deploys the built app to GitHub Pages (depends on build)
+- `pnpm deploy` - Deploys the built app to GitHub Pages using Turbo (depends on build)
+- `pnpm deploy:gh-pages` - Runs the deployment script through Turbo (recommended)
+
+### Project Structure
+
+```
+.
+├── .github/
+│   └── workflows/
+│       └── deploy.yml          # GitHub Actions workflow
+├── scripts/
+│   └── deploy.sh               # Manual deployment script
+├── apps/
+│   └── search/
+│       ├── dist/               # Build output (deployed to GitHub Pages)
+│       └── vite.config.ts      # Vite config with base path
+├── turbo.json                  # Turbo task configuration
+└── DEPLOY.md                   # This file
+```
 
 ### Troubleshooting
 
@@ -99,3 +124,15 @@ The deployment process uses the following Turbo tasks:
 **Issue**: Page shows 404
 
 - **Solution**: Check that you're accessing the correct URL: `https://USERNAME.github.io/REPO/`
+
+**Issue**: Script permission denied
+
+- **Solution**: Make the script executable: `chmod +x scripts/deploy.sh`
+
+### Hot Module Replacement (HMR)
+
+The development environment is configured to support HMR for the UI package:
+
+- Changes to `packages/ui/src/components/` will automatically refresh the page
+- No need to rebuild the UI package during development
+- Vite watches the source files directly in development mode
