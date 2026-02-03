@@ -1,0 +1,1 @@
+{"root":["./vite.config.ts","./src/vite-env.d.ts","./src/data/songs.ts","./src/app.tsx","./src/main.tsx"],"version":"5.9.2"}
