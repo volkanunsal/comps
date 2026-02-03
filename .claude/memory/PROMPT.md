@@ -78,3 +78,15 @@ The briefing document should cover:
 - How you'd enforce consistency and reuse across the application.
 
 Additionally, make sure to include a README file in the root of the repo with instructions on how to run the project locally.
+
+## Clarifications
+
+- The background color should be a light shade of gray, as in the design mockup.
+- The search input and filter components should be aligned horizontally.
+- When the search field is in focus, the border color should change to black, and it should not have a shadow effect.
+- The filter dropdowns should have more rounded corners, similar to the design mockup.
+- The checkbox color in the multiselect filter should be a shade of blue that matches the design mockup.
+- Pay closer attention to the action buttons of multiselect filters. There should be 2 buttons, not 3, and they should be styled according to the design mockup with blueish theme colors.
+- When a selected single-select filter is clicked again, it should deselect the option and revert to the default state.
+- When filters are focused, they should have a black border color without any shadow effect.
+- The search field should not have a border when not focused.
