@@ -42,12 +42,13 @@ function MultiSelectFilter({
 		setTempSelected(value);
 	}, [value]);
 
-	// Reset search when closing
+	// Reset search and temp selection when closing without applying
 	React.useEffect(() => {
 		if (!open) {
 			setSearchQuery("");
+			setTempSelected(value);
 		}
-	}, [open]);
+	}, [open, value]);
 
 	const displayText =
 		tempSelected.length > 0 ? `${label} (${tempSelected.length})` : label;
@@ -78,11 +79,6 @@ function MultiSelectFilter({
 		setOpen(false);
 	};
 
-	const handleCancel = () => {
-		setTempSelected(value);
-		setOpen(false);
-	};
-
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger asChild>
@@ -105,7 +101,7 @@ function MultiSelectFilter({
 					{/* Left panel - options list */}
 					<div className="flex flex-1 flex-col border-r">
 						{/* Search */}
-						<div className="border-b p-3">
+						<div className="border-b p-2">
 							<div className="relative">
 								<SearchIcon className="text-muted-foreground pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2" />
 								<Input
@@ -157,16 +153,16 @@ function MultiSelectFilter({
 									return option ? (
 										<div
 											key={option.value}
-											className="hover:bg-accent group mb-1 flex items-center justify-between rounded-sm px-2 py-1.5 transition-colors"
+											className="hover:bg-accent mb-1 flex items-center gap-1.5 rounded-sm px-2 py-1.5 transition-colors"
 										>
-											<span className="text-sm">{option.label}</span>
 											<button
 												type="button"
 												onClick={(e) => handleRemove(option.value, e)}
-												className="text-muted-foreground hover:text-foreground opacity-0 transition-opacity group-hover:opacity-100"
+												className="text-[#016088] shrink-0"
 											>
 												<XIcon className="size-3.5" />
 											</button>
+											<span className="text-sm">{option.label}</span>
 										</div>
 									) : null;
 								})
@@ -176,18 +172,13 @@ function MultiSelectFilter({
 				</div>
 
 				{/* Footer actions */}
-				<div className="flex items-center justify-between border-t p-3">
+				<div className="flex items-center justify-end gap-2 border-t p-3">
 					<Button variant="outline" size="sm" onClick={handleClearAll}>
 						Clear All
 					</Button>
-					<div className="flex gap-2">
-						<Button variant="ghost" size="sm" onClick={handleCancel}>
-							Cancel
-						</Button>
-						<Button size="sm" onClick={handleApply}>
-							Apply
-						</Button>
-					</div>
+					<Button size="sm" onClick={handleApply} className="bg-[#016088] hover:bg-[#014d6b] text-white">
+						Apply
+					</Button>
 				</div>
 			</PopoverContent>
 		</Popover>

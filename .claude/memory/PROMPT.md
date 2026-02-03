@@ -79,7 +79,7 @@ The briefing document should cover:
 
 Additionally, make sure to include a README file in the root of the repo with instructions on how to run the project locally.
 
-## Clarifications
+## Clarifications, 1
 
 - The background color should be a light shade of gray, as in the design mockup.
 - The search input and filter components should be aligned horizontally.
@@ -90,3 +90,16 @@ Additionally, make sure to include a README file in the root of the repo with in
 - When a selected single-select filter is clicked again, it should deselect the option and revert to the default state.
 - When filters are focused, they should have a black border color without any shadow effect.
 - The search field should not have a border when not focused.
+
+## Clarifications, 2
+
+- The search field should have a white background color.
+- Issues in the selected items panel of the multiselect filter:
+  - The remove icon should always be visible on each selected item, not only on hover.
+  - The remove icon should be flush to the left of the item text, with no extra spacing, not on the right.
+  - The remove icon should be the same shade of blue as the checkboxes in the dropdown: #016088.
+  - There is too much padding around the search input in the multiselect filter dropdown.
+- The primary action button in the multiselect filter should have a blue background color (#016088) with white text.
+- "Clear all" button in the multiselect filter should be aligned to the the right, and adjacent to the primary action button.
+- The filter buttons should have more rounded corners -- they should be almost pill-shaped.
+- There is too much margin between the action bar and the music list; please reduce it.

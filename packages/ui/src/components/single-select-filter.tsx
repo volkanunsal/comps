@@ -35,7 +35,12 @@ function SingleSelectFilter({
 	const displayText = selectedOption ? `${label}: ${selectedOption.label}` : label;
 
 	const handleSelect = (optionValue: string) => {
-		onValueChange?.(optionValue);
+		// Toggle: deselect if clicking the same option
+		if (value === optionValue) {
+			onValueChange?.(null);
+		} else {
+			onValueChange?.(optionValue);
+		}
 		setOpen(false);
 	};
 
