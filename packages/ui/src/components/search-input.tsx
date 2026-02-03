@@ -1,8 +1,8 @@
 import * as React from "react";
 import { SearchIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
-import { Input } from "@/components/input";
+import { cn } from "@repo/ui/lib/utils";
+import { Input } from "@repo/ui/components/input";
 
 interface SearchInputProps extends React.ComponentProps<"input"> {
   onSearch?: (value: string) => void;
