@@ -28,8 +28,8 @@ GITHUB_PAGES=true pnpm build
 echo "✅ Build completed!"
 echo "📤 Deploying to GitHub Pages..."
 
-# Deploy
-cd apps/search && pnpm deploy
+# Deploy using gh-pages from the search app
+cd apps/search && npx gh-pages -d dist
 
 echo "✨ Deployment complete!"
 echo "🌐 Your site will be available at: https://USERNAME.github.io/$REPO_NAME/"
